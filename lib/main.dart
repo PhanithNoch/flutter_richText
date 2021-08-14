@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart' as richText;
+import 'package:flutter_rich_text/screens/term_conditions_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(),
+      // home: HomeScreen(),
+      home: TermConditionScreen(),
     );
   }
 }
@@ -39,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Use _controller.document.toPlainText() to extract plain text.
    */
   // richText.QuillController _controller = richText.QuillController.basic();
-  late richText.QuillController _controller;
+   richText.QuillController _controller = richText.QuillController.basic();
   CollectionReference users = FirebaseFirestore.instance.collection('editors');
   var myJSON;
 
@@ -70,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              richText.QuillToolbar.basic(controller: _controller),
+              // richText.QuillToolbar.basic(controller: _controller),
               Expanded(
                 child: Container(
                   child: richText.QuillEditor.basic(
